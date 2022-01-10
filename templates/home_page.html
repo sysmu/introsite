@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+    <style>
+   div {
+    padding: 5px; /* Поля вокруг текста */
+    margin-bottom: 5px; /* Отступ снизу */
+   }
+   #left { text-align: left; }
+   #right { text-align: right; }
+   #center { text-align: center; }
+   .content {
+    border: 1px solid black; /* Параметры рамки */
+    padding: 5px; /* Поля вокруг текста */
+    margin-bottom: 5px; /* Отступ снизу */
+   }
+  </style>
+</head>
+<body>
+    <div style="float: left;">
+        <h1>Схема 9-го этажа</h1>
+        <img src="static/images/scheme_9level.jpg" alt="9_level">
+    </div>
+    <div style="text-align: center;"> {{ message }}</div>
+    <div style="float: right;">
+        <div id="center">
+        <div class="content">
+        <h2>Список посетителей</h2>
+        <table>
+             <caption>Количество людей на этаже: {{ on_floor }}</caption>
+             <thead><th>Id</th><th>Имя</th><th>Кабинет</th></thead>
+            {% for person in list %}
+                <tr>
+                    <td>{{ person[0] }}</td><td>{{ person[1] }}</td><td>{{ person[2] }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+        </div>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='scipt.js') }}"></script>
+</html>
