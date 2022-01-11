@@ -34,9 +34,9 @@
         <table>
              <caption>Количество людей на этаже: {{ on_floor }}</caption>
              <thead><th>Id</th><th>Имя</th><th>Кабинет</th></thead>
-            {% for person in list %}
+            {% for id, person in data%}
                 <tr>
-                    <td>{{ person[0] }}</td><td>{{ person[1] }}</td><td>{{ person[2] }}</td>
+                    <td>{{ id }}</td><td>{{ person[0] }}</td><td>{{ person[1] }}</td>
                 </tr>
             {% endfor %}
 

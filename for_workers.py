@@ -1,4 +1,3 @@
-import time
 from generate_random_workers import *
 
 
@@ -13,7 +12,9 @@ def check(users9, on_floor):
         if on_floor >= 2:
             return "all is ok", 0
         else:
-            return "the last man is in " + str(others_cab) + " cab", others_cab
+            return "the align is in " + str(cab_from_9) + " cab", cab_from_9
+        # else:
+        #     return "the last man is in " + str(others_cab) + " cab", others_cab
     else:
         if on_floor == 1:
             return "u r the last one", 0
@@ -25,29 +26,24 @@ def check(users9, on_floor):
 
 def main():
     while True:
-        # time.sleep(1)
         user_stroke = []
         user9, on_floor = random_number_of_workers()
         print("workers on the 9 floor: " + str(on_floor) + '\n', "workers from 9 in building: " + str(user9) + '\n',
               "workers from others levels: " + str(on_floor - user9))
         message, cab = check(user9, on_floor)
         print(message)
-        if user9 == 1 and on_floor != 2 :
+        if user9 == 1 and on_floor != 2:
             i = int(on_floor) - 1
         else:
             i = int(on_floor)
         c = 1
         while i != 0:
-            print(i)
             test = random_user_stroke(c)
             user_stroke.append(test)
             i = i - 1
             c = c + 1
         if cab != 0:
-                test1 = stroke_with_align_cab(c, cab)
-                user_stroke.append(test1)
+            test1 = stroke_with_align_cab(c, cab)
+            user_stroke.append(test1)
         print(user_stroke)
         return message, on_floor, user_stroke
-
-
-main()
