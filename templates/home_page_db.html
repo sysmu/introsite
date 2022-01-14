@@ -11,10 +11,12 @@
    #left { text-align: left; }
    #right { text-align: right; }
    #center { text-align: center; }
-   .content {
-    border: 1px solid black; /* Параметры рамки */
-    padding: 5px; /* Поля вокруг текста */
-    margin-bottom: 5px; /* Отступ снизу */
+      TABLE {
+    width: 300px; /* Ширина таблицы */
+    border: 1px solid black; /* Рамка вокруг таблицы */
+   }
+   TD, TH {
+    padding: 3px; /* Поля вокруг содержимого ячеек */
    }
     p.class1 { font-size: 200%; }
   </style>
@@ -25,15 +27,14 @@
         <img src="static/images/scheme_9level.jpg" height="500" alt="9_level">
     </div>
     <div style="text-align: center;" >
+    <div id="center">
         <p class="class1">{{ message }}</p>
-    </div>
-    <div style="float: right;">
-        <div id="center">
+                    <div>Количество людей на этаже: {{ on_floor }}</div>
+                <div>Количество людей с других этажей: {{ from_other_level }}</div>
         <div class="content">
-        <h2>Список посетителей</h2>
-        <table>
-             <caption>Количество людей на этаже: {{ on_floor }}</caption>
-             <thead><th>Id</th><th>Имя</th><th>Кабинет</th></thead>
+        <thead><caption><h2>Список посетителей</h2></caption></thead>
+        <table align="center">
+             <th>Id</th><th>Имя</th><th>Кабинет</th>
             {% for id, person in data%}
                 <tr>
                     <td>{{ id }}</td><td>{{ person[0] }}</td><td>{{ person[1] }}</td>
